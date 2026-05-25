@@ -13,6 +13,7 @@ body {
   margin: 0;
   min-width: 320px;
   background: #fff8ea;
+  overflow-x: hidden;
 }
 
 button,
@@ -21,4 +22,210 @@ input,
 textarea,
 select {
   font: inherit;
+}
+
+::selection {
+  background: #f59e0b;
+  color: #052e16;
+}
+
+.page-enter-active,
+.page-leave-active {
+  transition:
+    opacity 260ms ease,
+    transform 260ms ease,
+    filter 260ms ease;
+}
+
+.page-enter-from {
+  opacity: 0;
+  transform: translateY(14px);
+  filter: blur(8px);
+}
+
+.page-leave-to {
+  opacity: 0;
+  transform: translateY(-10px);
+  filter: blur(6px);
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 700ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.brand-mark {
+  box-shadow: 0 10px 24px rgba(6, 78, 59, 0.24);
+  transition:
+    transform 220ms ease,
+    box-shadow 220ms ease;
+}
+
+.group:hover .brand-mark {
+  transform: rotate(-5deg) scale(1.06);
+  box-shadow: 0 14px 30px rgba(6, 78, 59, 0.3);
+}
+
+.nav-pill::before,
+.cta-shimmer::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-115%);
+  background: linear-gradient(90deg, transparent, rgba(255, 248, 234, 0.35), transparent);
+  transition: transform 520ms ease;
+}
+
+.nav-pill:hover::before,
+.nav-pill.is-active::before,
+.cta-shimmer:hover::before {
+  transform: translateX(115%);
+}
+
+.nav-pill:not(.is-active):hover {
+  background: #064e3b;
+}
+
+.hero-glow {
+  position: absolute;
+  inset: -12%;
+  background:
+    radial-gradient(circle at 22% 22%, rgba(245, 158, 11, 0.32), transparent 32%),
+    radial-gradient(circle at 78% 72%, rgba(6, 95, 70, 0.24), transparent 38%);
+  filter: blur(8px);
+  animation: heroGlow 8s ease-in-out infinite alternate;
+}
+
+.hero-image {
+  animation: heroFloat 7s ease-in-out infinite;
+}
+
+.path-line {
+  position: relative;
+}
+
+.path-line::before {
+  content: "";
+  position: absolute;
+  left: 1.35rem;
+  top: 2.7rem;
+  bottom: 2.7rem;
+  width: 2px;
+  background: linear-gradient(#d97706, #047857);
+  transform-origin: top;
+  animation: drawPath 1200ms ease 400ms both;
+}
+
+.animated-card {
+  transform: translateY(0) rotate(0);
+  transition:
+    transform 260ms ease,
+    box-shadow 260ms ease,
+    border-color 260ms ease;
+}
+
+.animated-card:hover {
+  border-color: rgba(4, 120, 87, 0.36);
+  box-shadow: 0 22px 48px rgba(6, 78, 59, 0.16);
+  transform: translateY(-8px);
+}
+
+.product-token {
+  animation: tokenBreathe 4s ease-in-out infinite;
+}
+
+.ingredient-dot {
+  animation: dotPulse 1500ms ease-in-out infinite;
+}
+
+.form-field {
+  transition:
+    border-color 180ms ease,
+    box-shadow 180ms ease,
+    transform 180ms ease;
+}
+
+.form-field:focus {
+  box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.14);
+  transform: translateY(-1px);
+}
+
+@keyframes heroFloat {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+
+  50% {
+    transform: translateY(-12px) rotate(0.45deg);
+  }
+}
+
+@keyframes heroGlow {
+  from {
+    transform: scale(0.98) translate3d(-1%, 1%, 0);
+  }
+
+  to {
+    transform: scale(1.05) translate3d(1%, -1%, 0);
+  }
+}
+
+@keyframes drawPath {
+  from {
+    transform: scaleY(0);
+  }
+
+  to {
+    transform: scaleY(1);
+  }
+}
+
+@keyframes tokenBreathe {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.06);
+  }
+}
+
+@keyframes dotPulse {
+  0%,
+  100% {
+    opacity: 0.45;
+    transform: scale(0.85);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.15);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 1ms !important;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
 }

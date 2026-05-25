@@ -43,10 +43,10 @@ onMounted(() => {
 
 <template>
   <div class="min-h-screen bg-stone-50 text-stone-900">
-    <header class="sticky top-0 z-40 border-b border-emerald-900/10 bg-cream/95 backdrop-blur">
+    <header class="sticky top-0 z-40 border-b border-emerald-900/10 bg-cream/95 shadow-sm shadow-emerald-950/5 backdrop-blur">
       <nav class="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8">
-        <button class="flex items-center gap-3 text-left" type="button" @click="goTo('home')">
-          <span class="grid h-11 w-11 place-items-center rounded-full bg-emerald-900 text-lg font-black text-amber-100">
+        <button class="group flex items-center gap-3 text-left" type="button" @click="goTo('home')">
+          <span class="brand-mark grid h-11 w-11 place-items-center rounded-full bg-emerald-900 text-lg font-black text-amber-100">
             TKP
           </span>
           <span>
@@ -60,8 +60,8 @@ onMounted(() => {
             v-for="page in pages"
             :key="page.key"
             type="button"
-            class="rounded-full px-4 py-2 text-sm font-semibold transition hover:bg-emerald-900 hover:text-white"
-            :class="currentPage === page.key ? 'bg-emerald-900 text-white' : 'text-emerald-950'"
+            class="nav-pill relative overflow-hidden rounded-full px-4 py-2 text-sm font-semibold transition hover:text-white"
+            :class="currentPage === page.key ? 'is-active bg-emerald-900 text-white' : 'text-emerald-950'"
             @click="goTo(page.key)"
           >
             {{ page.label }}
@@ -69,7 +69,7 @@ onMounted(() => {
         </div>
 
         <a
-          class="hidden rounded-full bg-amber-500 px-5 py-2.5 text-sm font-bold text-emerald-950 shadow-sm transition hover:bg-amber-400 sm:inline-flex"
+          class="cta-shimmer hidden rounded-full bg-amber-500 px-5 py-2.5 text-sm font-bold text-emerald-950 shadow-sm transition hover:bg-amber-400 sm:inline-flex"
           :href="whatsappLink"
           target="_blank"
           rel="noreferrer"
@@ -93,7 +93,9 @@ onMounted(() => {
     </header>
 
     <main>
-      <component :is="currentComponent" @navigate="goTo" />
+      <Transition name="page" mode="out-in">
+        <component :is="currentComponent" :key="currentPage" @navigate="goTo" />
+      </Transition>
     </main>
 
     <footer class="border-t border-emerald-900/10 bg-emerald-950 px-4 py-10 text-amber-50">
