@@ -85,6 +85,11 @@ select {
   transition: transform 520ms ease;
 }
 
+.cta-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
 .nav-pill:hover::before,
 .nav-pill.is-active::before,
 .cta-shimmer:hover::before {
