@@ -31,7 +31,7 @@ export function revealElement(el, options = {}) {
     settle: { scale: 0.78, rotate: -4 },
   }[variant] || { y: 28 }
 
-  gsap.fromTo(
+  return gsap.fromTo(
     el,
     { autoAlpha: 0, ...from },
     {
@@ -58,7 +58,11 @@ export function installRevealDirective(app) {
       const raw = binding.value
       const options = typeof raw === 'object' ? raw : {}
       if (typeof raw === 'string') options.delay = Number.parseFloat(raw) / 1000 || 0
-      revealElement(el, options)
+      el.__revealTween = revealElement(el, options)
+    },
+    unmounted(el) {
+      el.__revealTween?.scrollTrigger?.kill()
+      el.__revealTween?.kill()
     },
   })
 }
@@ -90,4 +94,3 @@ export function animateFlyingDot(rect) {
     onComplete: () => dot.remove(),
   })
 }
-
