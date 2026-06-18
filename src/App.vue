@@ -20,7 +20,13 @@ async function refreshPageAnimations() {
     <main>
       <RouterView v-slot="{ Component, route }">
         <Transition name="page" mode="out-in" @after-enter="refreshPageAnimations">
-          <component :is="Component" :key="route.fullPath" />
+          <!--
+            Route pages contain multiple sibling sections. The keyed wrapper gives
+            Vue Transition one real DOM root, ensuring after-enter always fires.
+          -->
+          <div :key="route.fullPath">
+            <component :is="Component" />
+          </div>
         </Transition>
       </RouterView>
     </main>
