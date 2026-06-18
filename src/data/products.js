@@ -1,0 +1,19 @@
+export const categories = ['All', 'Pantry Essentials', 'Grains', 'Spices / Seasoning', 'Tea & Breakfast']
+
+export const products = [
+  { id: 'ugali-flour', name: 'Ugali Flour', category: 'Pantry Essentials', price: 8.99, unit: '2 kg', initials: 'UF', featured: true, description: 'Fine white maize meal for smooth, comforting ugali.' },
+  { id: 'chapati-flour', name: 'Chapati Flour', category: 'Pantry Essentials', price: 10.49, unit: '2 kg', initials: 'CF', description: 'Soft wheat flour selected for layered, tender chapatis.' },
+  { id: 'pishori-rice', name: 'Pishori Rice', category: 'Pantry Essentials', price: 13.99, unit: '2 kg', initials: 'PR', description: 'Aromatic long-grain rice for fragrant pilau and everyday meals.' },
+  { id: 'beans', name: 'Kenyan Beans', category: 'Grains', price: 7.99, unit: '1 kg', initials: 'KB', featured: true, description: 'Creamy, hearty beans for githeri, stews and comforting suppers.' },
+  { id: 'ndengu', name: 'Ndengu', category: 'Grains', price: 7.49, unit: '1 kg', initials: 'ND', description: 'Green grams for a rich, nourishing stew with chapati or rice.' },
+  { id: 'njahi', name: 'Njahi', category: 'Grains', price: 8.49, unit: '1 kg', initials: 'NJ', description: 'Traditional black beans with a deep, earthy flavour.' },
+  { id: 'pilau-masala', name: 'Pilau Masala', category: 'Spices / Seasoning', price: 5.99, unit: '100 g', initials: 'PM', featured: true, badge: 'Best seller', description: 'A warm, balanced spice blend for unmistakably Kenyan pilau.' },
+  { id: 'tea-masala', name: 'Tea Masala', category: 'Spices / Seasoning', price: 5.49, unit: '100 g', initials: 'TM', description: 'Cardamom-forward spice for a warming pot of Kenyan chai.' },
+  { id: 'royco', name: 'Royco Mchuzi Mix', category: 'Spices / Seasoning', price: 6.99, unit: '200 g', initials: 'RM', featured: true, badge: 'Pantry favourite', description: 'The familiar savoury seasoning for rich gravies and stews.' },
+  { id: 'nyama-choma', name: 'Nyama Choma Spice', category: 'Spices / Seasoning', price: 5.99, unit: '100 g', initials: 'NC', description: 'A smoky, savoury blend for grilled meat and vegetables.' },
+  { id: 'kenyan-tea', name: 'Kenyan Black Tea', category: 'Tea & Breakfast', price: 9.99, unit: '500 g', initials: 'KT', featured: true, description: 'Bold, bright Kenyan tea for breakfast or a milky afternoon chai.' },
+  { id: 'uji-flour', name: 'Uji Flour', category: 'Tea & Breakfast', price: 8.99, unit: '1 kg', initials: 'UJ', description: 'A wholesome fermented-style flour blend for warm breakfast porridge.' },
+]
+
+export const featuredProducts = products.filter((product) => product.featured)
+

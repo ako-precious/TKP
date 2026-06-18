@@ -1,48 +1,16 @@
 <script setup>
-import { recipes } from '../data'
+import { ArrowRight, Clock } from 'lucide-vue-next'
+import foodImage from '../assets/kenyan-food-table.png'
+import { recipes } from '../data/recipes'
 </script>
 
 <template>
-  <section class="bg-cream px-4 py-14 sm:px-6 lg:px-8">
-    <div class="mx-auto max-w-7xl">
-      <p v-reveal class="text-sm font-bold uppercase tracking-[0.22em] text-emerald-700">Recipes</p>
-      <h1 v-reveal="'90ms'" class="mt-3 font-serif text-5xl font-black text-emerald-950">Cook with pantry staples</h1>
-      <p v-reveal="'180ms'" class="mt-5 max-w-3xl text-lg leading-8 text-stone-700">
-        Simple Kenyan recipes built around easy-to-stock ingredients from the catalog.
-      </p>
-    </div>
-  </section>
-
-  <section class="px-4 py-12 sm:px-6 lg:px-8">
-    <div class="mx-auto grid max-w-7xl gap-6 lg:grid-cols-3">
-      <article
-        v-for="(recipe, recipeIndex) in recipes"
-        :key="recipe.title"
-        v-reveal="`${recipeIndex * 110}ms`"
-        class="animated-card rounded-lg border border-emerald-900/10 bg-white p-6 shadow-sm"
-      >
-        <div class="flex items-start justify-between gap-4">
-          <h2 class="font-serif text-3xl font-black leading-tight text-emerald-950">{{ recipe.title }}</h2>
-          <span class="shrink-0 rounded-full bg-amber-100 px-3 py-1 text-xs font-bold text-emerald-950">
-            {{ recipe.cookTime }}
-          </span>
-        </div>
-
-        <div class="mt-6">
-          <h3 class="text-sm font-black uppercase tracking-[0.18em] text-emerald-700">Ingredients</h3>
-          <ul class="mt-3 space-y-2 text-sm leading-6 text-stone-700">
-            <li v-for="(ingredient, index) in recipe.ingredients" :key="ingredient" class="flex gap-2">
-              <span class="ingredient-dot mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-amber-500" :style="{ animationDelay: `${index * 120}ms` }"></span>
-              <span>{{ ingredient }}</span>
-            </li>
-          </ul>
-        </div>
-
-        <div class="mt-6">
-          <h3 class="text-sm font-black uppercase tracking-[0.18em] text-emerald-700">Instructions</h3>
-          <p class="mt-3 text-sm leading-7 text-stone-700">{{ recipe.instructions }}</p>
-        </div>
-      </article>
-    </div>
-  </section>
+  <section class="page-hero"><div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8"><p v-reveal class="eyebrow text-maize">From our kitchen</p><h1 v-reveal="'80ms'" class="page-title">Recipes that taste<br />like coming home.</h1><p v-reveal="'160ms'" class="mt-5 max-w-2xl text-lg leading-8 text-cream/75">Four warm Kenyan favourites, written to be cooked, shared and made your own.</p></div></section>
+  <section class="px-4 py-16 sm:px-6 lg:px-8"><div class="mx-auto grid max-w-7xl gap-7 sm:grid-cols-2">
+    <article v-for="(recipe, index) in recipes" :key="recipe.slug" v-reveal="`${index * 80}ms`" class="recipe-card group overflow-hidden rounded-[1.6rem] bg-white shadow-sm">
+      <RouterLink :to="`/recipes/${recipe.slug}`" class="block overflow-hidden"><img :src="foodImage" :alt="recipe.title" class="h-72 w-full object-cover transition duration-700 group-hover:scale-105" :style="{ objectPosition: recipe.imagePosition }" /></RouterLink>
+      <div class="p-6 sm:p-7"><div class="flex items-center gap-2 text-xs font-black uppercase tracking-wider text-terracotta"><Clock :size="16" /> {{ recipe.totalTime }}</div><h2 class="mt-3 font-serif text-3xl font-black text-forest">{{ recipe.title }}</h2><p class="mt-3 leading-7 text-charcoal/65">{{ recipe.excerpt }}</p><RouterLink :to="`/recipes/${recipe.slug}`" class="mt-5 inline-flex items-center gap-2 font-black text-terracotta">Cook this recipe <ArrowRight :size="17" /></RouterLink></div>
+    </article>
+  </div></section>
 </template>
+
