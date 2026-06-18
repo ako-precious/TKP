@@ -1,19 +1,26 @@
 <script setup>
+import { nextTick } from 'vue'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import SiteHeader from './components/SiteHeader.vue'
 import SiteFooter from './components/SiteFooter.vue'
 import CartDrawer from './components/CartDrawer.vue'
 import { useCartStore } from './stores/cart'
 
 const cart = useCartStore()
+
+async function refreshPageAnimations() {
+  await nextTick()
+  requestAnimationFrame(() => ScrollTrigger.refresh())
+}
 </script>
 
 <template>
   <div class="min-h-screen bg-cream text-charcoal">
     <SiteHeader />
     <main>
-      <RouterView v-slot="{ Component }">
-        <Transition name="page" mode="out-in">
-          <component :is="Component" />
+      <RouterView v-slot="{ Component, route }">
+        <Transition name="page" mode="out-in" @after-enter="refreshPageAnimations">
+          <component :is="Component" :key="route.fullPath" />
         </Transition>
       </RouterView>
     </main>
@@ -26,4 +33,3 @@ const cart = useCartStore()
     </Transition>
   </div>
 </template>
-

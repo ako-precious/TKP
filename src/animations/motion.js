@@ -47,6 +47,7 @@ export function revealElement(el, options = {}) {
         trigger: el,
         start: options.start || 'top 84%',
         once: true,
+        invalidateOnRefresh: true,
       },
     },
   )
