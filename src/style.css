@@ -71,6 +71,13 @@ a { transition: color 180ms ease, background-color 180ms ease, transform 180ms e
 .contact-row small { font-size: .64rem; font-weight: 900; letter-spacing: .15em; text-transform: uppercase; color: rgba(247,241,230,.5); }
 .whatsapp-ping { position: relative; display: grid; place-items: center; }
 .whatsapp-ping::before { content: ""; position: absolute; inset: -7px; border: 1px solid #D9A441; border-radius: 999px; animation: whatsappPing 2.4s ease-out infinite; }
+.floating-whatsapp { position: fixed; right: 1.25rem; bottom: 1.25rem; z-index: 55; display: flex; height: 3.5rem; align-items: center; justify-content: center; gap: .55rem; border: 2px solid rgba(247,241,230,.85); border-radius: 999px; background: #1f8f4e; padding: 0 1rem; color: white; box-shadow: 0 12px 30px rgba(27,58,31,.28); transition: transform .25s cubic-bezier(.22,1,.36,1), background-color .2s ease, box-shadow .25s ease; }
+.floating-whatsapp::before { content: ""; position: absolute; inset: -1px; z-index: -1; border: 1px solid rgba(31,143,78,.65); border-radius: inherit; animation: floatingWhatsappPing 2.8s ease-out infinite; }
+.floating-whatsapp:hover { transform: translateY(-4px) scale(1.03); background: #187c41; box-shadow: 0 17px 36px rgba(27,58,31,.34); }
+.floating-whatsapp:active { transform: scale(.94); }
+.floating-whatsapp:focus-visible { outline: 3px solid #D9A441; outline-offset: 3px; }
+.floating-whatsapp-label { max-width: 0; overflow: hidden; white-space: nowrap; font-size: .75rem; font-weight: 900; opacity: 0; transition: max-width .35s cubic-bezier(.22,1,.36,1), opacity .2s ease; }
+.floating-whatsapp:hover .floating-whatsapp-label, .floating-whatsapp:focus-visible .floating-whatsapp-label { max-width: 9rem; opacity: 1; }
 .success-check { display: grid; height: 3.5rem; width: 3.5rem; place-items: center; border-radius: 999px; background: #1B3A1F; color: #F7F1E6; animation: successSettle .65s cubic-bezier(.34,1.56,.64,1) both; }
 .success-check svg { stroke-dasharray: 32; stroke-dashoffset: 32; animation: checkDraw .45s ease .28s forwards; }
 .recipe-image-wrap::after { content: ""; position: absolute; inset: 45% 0 0; background: linear-gradient(transparent, rgba(27,58,31,.88)); opacity: 0; transform: translateY(20%); transition: opacity .42s ease, transform .42s cubic-bezier(.22,1,.36,1); }
@@ -122,6 +129,7 @@ a { transition: color 180ms ease, background-color 180ms ease, transform 180ms e
 @keyframes wordmarkIn { to { opacity: 1; transform: none; } }
 @keyframes clockDrift { to { transform: rotate(360deg); } }
 @keyframes whatsappPing { 0% { opacity: .65; transform: scale(.72); } 75%,100% { opacity: 0; transform: scale(1.55); } }
+@keyframes floatingWhatsappPing { 0% { opacity: .55; transform: scale(1); } 75%,100% { opacity: 0; transform: scale(1.32); } }
 @keyframes successSettle { from { opacity: 0; transform: scale(.5) rotate(-20deg); } }
 @keyframes checkDraw { to { stroke-dashoffset: 0; } }
 @keyframes modalIn { from { opacity: 0; transform: scale(.82) translate(-18px,22px); } to { opacity: 1; transform: none; } }
@@ -129,6 +137,8 @@ a { transition: color 180ms ease, background-color 180ms ease, transform 180ms e
 @media (max-width: 640px) {
   .page-title { font-size: 3.2rem; }
   .product-card:hover, .recipe-card:hover { transform: none; }
+  .floating-whatsapp { right: .9rem; bottom: .9rem; height: 3.25rem; width: 3.25rem; padding: 0; }
+  .floating-whatsapp-label { display: none; }
 }
 @media (hover: hover) and (pointer: fine) {
   .product-actions, .product-card .add-button { opacity: .76; transform: translateY(5px); transition: opacity .3s ease, transform .3s cubic-bezier(.22,1,.36,1); }

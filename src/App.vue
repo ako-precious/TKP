@@ -4,6 +4,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import SiteHeader from './components/SiteHeader.vue'
 import SiteFooter from './components/SiteFooter.vue'
 import CartDrawer from './components/CartDrawer.vue'
+import FloatingWhatsApp from './components/FloatingWhatsApp.vue'
 import { useCartStore } from './stores/cart'
 
 const cart = useCartStore()
@@ -31,6 +32,7 @@ async function refreshPageAnimations() {
       </RouterView>
     </main>
     <SiteFooter />
+    <FloatingWhatsApp />
     <CartDrawer />
     <Transition name="toast">
       <div v-if="cart.toast" class="fixed bottom-5 left-1/2 z-[70] -translate-x-1/2 rounded-full bg-forest px-5 py-3 text-sm font-bold text-white shadow-2xl" role="status">
