@@ -8,6 +8,7 @@ import { motion, prefersReducedMotion } from '../animations/motion'
 const props = defineProps({ product: { type: Object, required: true } })
 const quantity = ref(1)
 const added = ref(false)
+const imageFailed = ref(false)
 const card = ref(null)
 const quantityDigit = ref(null)
 const cart = useCartStore()
@@ -30,7 +31,16 @@ function addToCart() {
   <article ref="card" class="product-card group flex h-full flex-col overflow-hidden rounded-[1.4rem] border border-basket/15 bg-white">
     <div class="relative grid h-48 place-items-center overflow-hidden bg-[radial-gradient(circle_at_30%_30%,#fff8ea,#eadbc4)]">
       <span v-if="product.badge" class="absolute left-3 top-3 z-10 -rotate-2 rounded-sm bg-maize px-3 py-1 text-[10px] font-black uppercase tracking-wider text-forest">{{ product.badge }}</span>
-      <div class="product-pack grid h-28 w-24 place-items-center rounded-lg border border-basket/20 bg-cream shadow-lg">
+      <img
+        v-if="product.image && !imageFailed"
+        class="product-image h-full w-full object-cover"
+        :src="product.image"
+        :alt="`${product.name} product`"
+        loading="lazy"
+        decoding="async"
+        @error="imageFailed = true"
+      />
+      <div v-else class="product-pack grid h-28 w-24 place-items-center rounded-lg border border-basket/20 bg-cream shadow-lg">
         <span class="text-center"><b class="block font-serif text-3xl text-forest">{{ product.initials }}</b><small class="mt-2 block px-2 text-[9px] font-black uppercase tracking-widest text-terracotta">Kenyan Pantry</small></span>
       </div>
     </div>

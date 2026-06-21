@@ -6,6 +6,7 @@
     "price": 8.99,
     "unit": "2 kg",
     "initials": "UF",
+    "image": "/products/ugali-flour.png",
     "featured": true,
     "description": "Fine white maize meal for smooth, comforting ugali."
   },
@@ -16,6 +17,7 @@
     "price": 10.49,
     "unit": "2 kg",
     "initials": "CF",
+    "image": "/products/chapati-flour.png",
     "featured": false,
     "description": "Soft wheat flour selected for layered, tender chapatis."
   },
@@ -26,6 +28,7 @@
     "price": 13.99,
     "unit": "2 kg",
     "initials": "PR",
+    "image": "/products/pishori-rice.png",
     "featured": false,
     "description": "Aromatic long-grain rice for fragrant pilau and everyday meals."
   },
@@ -36,6 +39,7 @@
     "price": 7.99,
     "unit": "1 kg",
     "initials": "KB",
+    "image": "/products/beans.png",
     "featured": true,
     "description": "Creamy, hearty beans for githeri, stews and comforting suppers."
   },
@@ -46,6 +50,7 @@
     "price": 7.49,
     "unit": "1 kg",
     "initials": "ND",
+    "image": "/products/ndengu.png",
     "featured": false,
     "description": "Green grams for a rich, nourishing stew with chapati or rice."
   },
@@ -56,6 +61,7 @@
     "price": 8.49,
     "unit": "1 kg",
     "initials": "NJ",
+    "image": "/products/njahi.png",
     "featured": false,
     "description": "Traditional black beans with a deep, earthy flavour."
   },
@@ -66,6 +72,7 @@
     "price": 5.99,
     "unit": "100 g",
     "initials": "PM",
+    "image": "/products/pilau-masala.png",
     "featured": true,
     "badge": "Best seller",
     "description": "A warm, balanced spice blend for unmistakably Kenyan pilau."
@@ -77,6 +84,7 @@
     "price": 5.49,
     "unit": "100 g",
     "initials": "TM",
+    "image": "/products/tea-masala.png",
     "featured": false,
     "description": "Cardamom-forward spice for a warming pot of Kenyan chai."
   },
@@ -87,6 +95,7 @@
     "price": 6.99,
     "unit": "200 g",
     "initials": "RM",
+    "image": "/products/royco.png",
     "featured": true,
     "badge": "Pantry favourite",
     "description": "The familiar savoury seasoning for rich gravies and stews."
@@ -98,6 +107,7 @@
     "price": 5.99,
     "unit": "100 g",
     "initials": "NC",
+    "image": "/products/nyama-choma.png",
     "featured": false,
     "description": "A smoky, savoury blend for grilled meat and vegetables."
   },
@@ -108,6 +118,7 @@
     "price": 9.99,
     "unit": "500 g",
     "initials": "KT",
+    "image": "/products/kenyan-tea.png",
     "featured": true,
     "description": "Bold, bright Kenyan tea for breakfast or a milky afternoon chai."
   },
@@ -118,6 +129,7 @@
     "price": 8.99,
     "unit": "1 kg",
     "initials": "UJ",
+    "image": "/products/uji-flour.png",
     "featured": false,
     "description": "A wholesome fermented-style flour blend for warm breakfast porridge."
   }
